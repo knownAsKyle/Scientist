@@ -8,7 +8,173 @@
 
 (function () {
     "use strict";
-    angular.module("scientist").constant("config", {});
+    angular.module("scientist").constant("config", {
+        "scientist": {
+            "defaultList": [{
+                background: "red",
+                icon: "docBrownSmall.jpg",
+                title: "Dr. Emmet Brown",
+                details: 'Emmett Lathrop "Doc" Brown, Ph.D., is the inventor of a time machine, which he builds out of a DeLorean sports car.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "green",
+                icon: "egon2.jpg",
+                title: "Dr. Egon Spengler",
+                details: 'Egon Spengler, Ph.D., most notably as child, only ever had one toy, "part of a Slinky", which he straightened out.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "darkBlue",
+                icon: "don.jpg",
+                title: "Donatello",
+                details: 'Scientist, inventor, engineer, and technological genius, Donatello wears a purple mask and wields a bo staff.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "blue",
+                icon: "muppets.jpg",
+                title: "Dr. Bunsen Honeydew & Beaker",
+                details: 'Inventions include: edible paper clips, a gorilla detector, banana sharpener, and an electric nose warmer.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "yellow",
+                icon: "nye.png",
+                title: "Bill Nye",
+                details: 'William Sanford "Bill" Nye, enjoys scientific inquiry, critical investigation, and the use of reason in examining extraordinary claims.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "darkBlue",
+                icon: "abe.png",
+                title: "Abraham Sapien",
+                details: 'Abraham "Abe" Sapien; His vocabularly is most pretigious. His favorite food is rotten eggs.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "pink",
+                icon: "theBrain.jpg",
+                title: "The Brain",
+                details: '"Biological Recombinant Algorithmic Intelligence Nexus". -the BRAIN.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "darkGreen",
+                icon: "gadget.gif",
+                title: "Gadget Hackwrench",
+                details: 'Gadget moves, thinks, and talks quickly, sometimes leaving others looking dazed and confused.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "purple",
+                icon: "station.jpg",
+                title: "Station",
+                details: 'The most intelligent being in the universe. Can usually be found in heaven.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "deepBlue",
+                icon: "beakman.jpg",
+                title: "Beakman",
+                details: 'An eccentric scientist who performed experiments and demonstrations to illustrate various scientific concepts.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "lightPurple",
+                icon: "pennyBrain.jpg",
+                title: "Penny and Brain",
+                details: 'Penny is a master at the art of deduction and brain wears a device to keep in contact with Penny.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "darkBlue",
+                icon: "robotnik.png",
+                title: "Doctor Ivo Robotnik",
+                details: 'Doctor Ivo "Eggman" Robotnik, a certifiable genius with an IQ of 300, and a renowned authority on robotics.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "orange",
+                icon: "shrunkKids.png",
+                title: "Dr. Wayne Szalinski",
+                details: 'Matter is made up of not only density but of empty space, and if we can proportionally reduce the amount of empty space in any given object, we can, thereby, shrink the object.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "indigo",
+                icon: "stark.jpg",
+                title: "Tony Stark",
+                details: 'Anthony "Tony" Edward Stark; Genius, billionaire, playboy, philanthropist.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "cyan",
+                icon: "islandProf.png",
+                title: "Dr. Roy Hinkley",
+                details: 'Professor Roy "the Professor" Hinkley, Ph.D., popularized the use of coconuts as the building blocks for nuclear reactors.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "red",
+                icon: "max.png",
+                title: "Miracle Max",
+                details: 'The best and last miracle worker in Florin.  Also, hates prince Humperdinck.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "purple",
+                icon: "q.gif",
+                title: "Q",
+                details: 'Quartermaster Major Boothroyd of the Q branch/division, pursues science for queen and country',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }, {
+                background: "green",
+                icon: "farnsworth.jpg",
+                title: "Hubert Farnsworth",
+                details: 'Professor Hubert J. Farnsworth, considered to be one of the most brilliant inventors on Earth, when he is awake.',
+                span: {
+                    col: 1,
+                    row: 1
+                }
+            }]
+        }
+    });
 })();
 "use strict";
 
@@ -18,17 +184,10 @@
     scientistController.$inject = ["$scope", "$timeout", "config", "scientistFactory"];
 
     function scientistController($scope, $timeout, config, scientistFactory) {
-        this.tiles = scientistFactory.buildGridModel({
-            icon: "./media/",
-            title: "Name",
-            background: ""
-        });
-        $scope.selectedItem = null;
+        /*jshint validthis:true */
+        this.tiles = scientistFactory.activate();
         this.selectItem = function (item) {
-            $timeout(function () {
-                $scope.selectedItem = item;
-                console.log($scope.selectedItem);
-            });
+            $scope.selectedItem = scientistFactory.selectScientist(item);
         };
     }
 })();
@@ -36,87 +195,31 @@
 
 (function () {
     "use strict";
-    angular.module("scientist").factory("scientistFactory", function () {
+    angular.module("scientist").factory("scientistFactory", scientistFactory);
+    scientistFactory.$inject = ["config"];
+
+    function scientistFactory(config) {
         return {
-            buildGridModel: buildGridModel
+            activate: activate,
+            selectScientist: selectScientist
         };
 
-        function buildGridModel(tileTmpl) {
-            var it,
-                results = [];
-            for (var j = 0; j < 12; j++) {
-                it = angular.extend({}, tileTmpl);
-                it.span = {
-                    row: 1,
-                    col: 1
-                };
-                switch (j + 1) {
-                    case 1:
-                        it.background = "red";
-                        it.icon = it.icon + "docBrownSmall.jpg";
-                        it.title = it.title = "Dr. Emmet Brown";
-                        break;
-                    case 2:
-                        it.background = "green";
-                        it.icon = it.icon + "egon2.jpg";
-                        it.title = "Dr. Egon Spengler";
-                        break;
-                    case 3:
-                        it.background = "darkBlue";
-                        it.icon = it.icon + "don.jpg";
-                        it.title = "Donatello";
-                        break;
-                    case 4:
-                        it.background = "blue";
-                        it.icon = it.icon + "muppets.jpg";
-                        it.title = "Dr. Bunsen Honeydew & Beaker";
-                        break;
-                    case 5:
-                        it.background = "yellow";
-                        it.icon = it.icon + "nye.png";
-                        it.title = "Dr. Bill Nye";
-                        break;
-                    case 6:
-                        it.background = "pink";
-                        it.icon = it.icon + "theBrain.jpg";
-                        it.title = "The Brain";
-                        break;
-                    case 7:
-                        it.background = "yellow";
-                        it.icon = it.icon + "gadget.gif";
-                        it.title = "Gadget Hackwrench";
-                        break;
-                    case 8:
-                        it.background = "purple";
-                        it.icon = it.icon + "station.jpg";
-                        it.title = "Station";
-                        break;
-                    case 9:
-                        it.background = "deepBlue";
-                        it.icon = it.icon + "beakman.jpg";
-                        it.title = "Beakman";
-                        break;
-                    case 10:
-                        it.background = "lightPurple";
-                        it.icon = it.icon + "pennyBrain.jpg";
-                        it.title = "Penny and Brain";
-                        break;
+        function activate() {
+            var list = arguments.length <= 0 || arguments[0] === undefined ? config.scientist.defaultList : arguments[0];
 
-                    case 11:
-                        it.background = "darkBlue";
-                        it.icon = it.icon + "robotnik.png";
-                        it.title = "Doctor Ivo Robotnik";
-                        break;
-                    case 12:
-                        it.background = "red";
-                        it.icon = it.icon + "shrunkKids.png";
-                        it.title = "Dr. Wayne Szalinski";
-                        break;
-                }
-                results.push(it);
-            }
-            console.log("results:", results);
-            return results;
+            return buildGridModel(list);
         }
-    });
+
+        function selectScientist(item) {
+            item.span.col = item.span.col === 2 ? 1 : 2;
+            item.span.row = item.span.row === 2 ? 1 : 2;
+            item.selected = item.selected ? null : true;
+            return item;
+        }
+
+        function buildGridModel(list) {
+            //Manipulate list if need be...
+            return list;
+        }
+    }
 })();
