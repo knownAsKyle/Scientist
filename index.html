@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <title>Kyle Uhan</title>
+
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        <link rel="stylesheet" type="text/css" href="dist/style.css">
+        <!--<link rel="stylesheet" type="text/css" href="dist/style.min.css">-->
+    </head>
+    <body ng-app="scientist">
+        <div ng-controller="scientistController as vm" flex>
+            <md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px" md-gutter-gt-sm="4px">
+            	<md-grid-tile md-ink-ripple  ng-repeat="tile in vm.tiles" md-rowspan="{{tile.span.row}}" md-colspan="{{tile.span.col}}" md-colspan-sm="1" class="{{tile.background}} pointer" ng-click="vm.selectItem(tile)">
+            	<img class="tileImage" ng-if="tile.icon !=='./media/'" ng-src="{{tile.icon}}" />
+            	<span ng-if="tile.icon ==='./media/'">Image</span>
+		            <md-grid-tile-footer>
+		            	<h3>
+		            		{{tile.title}}
+		            	</h3>
+		            </md-grid-tile-footer>
+	            </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <!--JQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!--BootStrap-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!--Angular-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+        <!--Angular Animate-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-animate.min.js"></script>
+        <!--Firebase-->
+        <script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+        <!--app file DEV-->
+        <script src="dist/script.js"></script>
+        <!--app file-->
+        <!--<script src="dist/script.min.js"></script>-->
+    </body>
+</html>
